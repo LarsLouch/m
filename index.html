@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ff3d71" />
+    <title>Eu te amo</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        align-items: center;
+        background:
+          radial-gradient(circle at 50% 45%, rgba(255, 90, 137, 0.42), transparent 26rem),
+          linear-gradient(145deg, #230019, #720038 52%, #26001e);
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        min-height: 100svh;
+        overflow: hidden;
+      }
+
+      main {
+        display: grid;
+        justify-items: center;
+        padding: 2rem;
+        position: relative;
+        text-align: center;
+        width: min(100%, 48rem);
+      }
+
+      h1 {
+        color: #fff7fa;
+        font-size: clamp(3.6rem, 13vw, 8.5rem);
+        letter-spacing: 0.08em;
+        line-height: 0.95;
+        margin: 0;
+        text-shadow: 0 0 1.5rem rgba(255, 214, 228, 0.8);
+        z-index: 1;
+      }
+
+      h1.long-copy {
+        font-size: clamp(1.65rem, 5.2vw, 3.8rem);
+        letter-spacing: 0.02em;
+        line-height: 1.08;
+        max-width: 20ch;
+      }
+
+      .message {
+        color: #ffe1eb;
+        font-size: clamp(1rem, 3vw, 1.4rem);
+        margin: 1rem 0 3rem;
+        z-index: 1;
+      }
+
+      .heart-wrap {
+        display: grid;
+        filter: drop-shadow(0 1.2rem 1.8rem rgba(44, 0, 27, 0.55));
+        height: min(43vw, 16rem);
+        place-items: center;
+        position: relative;
+        width: min(48vw, 18rem);
+        z-index: 1;
+      }
+
+      .heart {
+        animation: beat 1.15s ease-in-out infinite;
+        background: linear-gradient(145deg, #ff8ab0, #ff1c5b 54%, #b30045);
+        height: 10rem;
+        position: relative;
+        transform: rotate(-45deg);
+        width: 10rem;
+      }
+
+      .heart::before,
+      .heart::after {
+        background: inherit;
+        border-radius: 50%;
+        content: "";
+        height: 10rem;
+        position: absolute;
+        width: 10rem;
+      }
+
+      .heart::before { top: -5rem; left: 0; }
+      .heart::after { top: 0; left: 5rem; }
+
+      .heart.emoji {
+        align-items: center;
+        animation: emoji-pop 1.15s ease-in-out infinite;
+        background: none;
+        display: flex;
+        font-size: clamp(7rem, 24vw, 13rem);
+        justify-content: center;
+        transform: none;
+      }
+
+      .heart.emoji::before,
+      .heart.emoji::after {
+        display: none;
+      }
+
+      .spark {
+        animation: float var(--duration) ease-in-out infinite alternate;
+        color: #ffd1e0;
+        font-size: var(--size);
+        left: var(--left);
+        opacity: 0.9;
+        position: absolute;
+        top: var(--top);
+        transform: translate(-50%, -50%);
+        z-index: 0;
+      }
+
+      .spark:nth-of-type(1) { --left: 8%; --top: 28%; --size: 2rem; --duration: 2.5s; }
+      .spark:nth-of-type(2) { --left: 18%; --top: 74%; --size: 1.2rem; --duration: 3.2s; }
+      .spark:nth-of-type(3) { --left: 33%; --top: 15%; --size: 1.5rem; --duration: 2.1s; }
+      .spark:nth-of-type(4) { --left: 72%; --top: 16%; --size: 1.7rem; --duration: 2.8s; }
+      .spark:nth-of-type(5) { --left: 89%; --top: 33%; --size: 1.3rem; --duration: 2.3s; }
+      .spark:nth-of-type(6) { --left: 82%; --top: 76%; --size: 2.1rem; --duration: 3s; }
+      .spark:nth-of-type(7) { --left: 52%; --top: 88%; --size: 1.1rem; --duration: 2.4s; }
+
+      @keyframes beat {
+        0%, 100% { transform: rotate(-45deg) scale(0.93); }
+        14% { transform: rotate(-45deg) scale(1.08); }
+        28% { transform: rotate(-45deg) scale(0.96); }
+        42% { transform: rotate(-45deg) scale(1.12); }
+        58% { transform: rotate(-45deg) scale(0.98); }
+      }
+
+      @keyframes float {
+        from { margin-top: 0; opacity: 0.6; }
+        to { margin-top: -1.3rem; opacity: 1; }
+      }
+
+      @keyframes emoji-pop {
+        0%, 100% { transform: scale(0.94) rotate(-3deg); }
+        50% { transform: scale(1.08) rotate(3deg); }
+      }
+
+      @media (max-width: 480px) {
+        main { padding: 1.5rem; }
+        .message { margin-bottom: 2rem; }
+        .heart { height: 7.5rem; width: 7.5rem; }
+        .heart::before, .heart::after { height: 7.5rem; width: 7.5rem; }
+        .heart::before { top: -3.75rem; }
+        .heart::after { left: 3.75rem; }
+        h1.long-copy { font-size: clamp(1.35rem, 6.6vw, 2.1rem); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .heart, .spark { animation: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <main aria-labelledby="love-title">
+      <span class="spark" aria-hidden="true">♥</span>
+      <span class="spark" aria-hidden="true">♥</span>
+      <span class="spark" aria-hidden="true">♥</span>
+      <span class="spark" aria-hidden="true">♥</span>
+      <span class="spark" aria-hidden="true">♥</span>
+      <span class="spark" aria-hidden="true">♥</span>
+      <span class="spark" aria-hidden="true">♥</span>
+      <h1 id="love-title" aria-live="polite">EU TE AMO</h1>
+      <p class="message" id="love-message">Meu coração bate por você.</p>
+      <div class="heart-wrap" id="symbol-wrap" role="img" aria-label="Um coração vermelho pulsando">
+        <div class="heart" id="symbol"></div>
+      </div>
+      <script>
+        const stages = [
+          {
+            title: "EU TE AMO",
+            message: "Meu coração bate por você.",
+            symbol: "",
+            symbolLabel: "Um coração vermelho pulsando",
+            duration: 3000,
+          },
+          {
+            title: "ME PERDOA, POR FAVOR!",
+            message: "Eu sinto muito.",
+            symbol: "😔",
+            symbolLabel: "Um emoji triste demonstrando arrependimento",
+            duration: 3000,
+          },
+          {
+            title: "Eu realmente queria namorar com você e ser só seu. Eu nunca mais erro, eu prometo de verdade!",
+            message: "Me dá uma segunda chance?",
+            symbol: "🥺",
+            symbolLabel: "Um emoji implorando por uma segunda chance",
+            duration: 6000,
+          },
+        ];
+
+        const title = document.getElementById("love-title");
+        const message = document.getElementById("love-message");
+        const symbol = document.getElementById("symbol");
+        const symbolWrap = document.getElementById("symbol-wrap");
+        let stageIndex = 0;
+
+        function showStage() {
+          const stage = stages[stageIndex];
+          title.textContent = stage.title;
+          title.classList.toggle("long-copy", stageIndex === 2);
+          message.textContent = stage.message;
+          symbol.textContent = stage.symbol;
+          symbol.classList.toggle("emoji", stage.symbol !== "");
+          symbolWrap.setAttribute("aria-label", stage.symbolLabel);
+          document.title = stage.title;
+          window.setTimeout(() => {
+            stageIndex = (stageIndex + 1) % stages.length;
+            showStage();
+          }, stage.duration);
+        }
+
+        showStage();
+      </script>
+    </main>
+  </body>
+</html>
